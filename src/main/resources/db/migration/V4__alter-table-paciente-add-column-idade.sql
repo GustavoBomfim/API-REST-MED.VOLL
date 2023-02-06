@@ -1,0 +1,1 @@
+alter table pacientes add idade varchar(3) not null;
