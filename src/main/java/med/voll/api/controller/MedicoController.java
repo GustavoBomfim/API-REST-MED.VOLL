@@ -58,13 +58,10 @@ public class MedicoController {
         return ResponseEntity.noContent().build();
     }
 
-        /*
-    @GetMapping()
-    public ResponseEntity<List<Medico>> listar(){
-        var page = repository.findAll();
-        return ResponseEntity.ok(page);
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id){
+        var medico = repository.getReferenceById(id);
+
+        return ResponseEntity.ok(new DadosDetalhamentoMedico(medico));
     }
-
-     */
-
 }
