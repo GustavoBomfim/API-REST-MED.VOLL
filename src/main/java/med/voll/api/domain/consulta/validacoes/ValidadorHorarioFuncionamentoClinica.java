@@ -10,8 +10,10 @@ public class ValidadorHorarioFuncionamentoClinica {
         var dataConsulta = dados.data();
 
         var domingo = dataConsulta.getDayOfWeek().equals(DayOfWeek.SUNDAY);
-        if (domingo){
-            throw new ValidacaoException("A clínica não abre aos domingos.");
+        var antesAberturaDaClinica = dataConsulta.getHour() > 7;
+        var depoisAberturaDaClinica = dataConsulta.getHour() > 18;
+        if (domingo || antesAberturaDaClinica || depoisAberturaDaClinica){
+            throw new ValidacaoException("Consulta fora do horário de funcionamento da clínica.");
         }
     }
 }
